@@ -1,8 +1,21 @@
-# Python Flask app on Azure App Service Web
+# Steps to deploy on Azure App Service
 
-This is a minimal sample app that demonstrates how to run a Python Flask application on Azure App Service Web. It is integrated with Azure Storage as well. Upload a file to server via AJAX and server then uploads it to Azure Storage. AZURE_STORAGE_KEY is accessed in runtime through an environment variable. 
+1. Build docker image from the code: 
+    
+        docker build -f Dockerfile -t <app-name>:latest .
 
-This repository can directly be deployed to Azure App Service.
+2. Run and test your new docker image locally (pass required env variables): 
 
-For more information, please see the [Creating web apps with Flask in Azure](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-python-create-deploy-flask-app).
+        docker run -p 8080:8080 -e AZURE_STORAGE_KEY=<key> --rm <app-name>
+
+3. Locate the image id by running `docker images` and tag existing image with your Docker Hub username: 
+
+        docker tag <image-id> <dockerhub-username>/<app-name>
+
+4. Push the image to Docker Hub: 
+
+        docker push <dockerhub-username>/<app-name>
+
+
+For more information, please see the [Use a custom Docker image for Web App for Containers](https://docs.microsoft.com/en-us/azure/app-service/containers/tutorial-custom-docker-image).
 
