@@ -16,7 +16,7 @@
 
         docker push <dockerhub-username>/<app-name>
 
-5. Go to azure portal and create a new "Web app for containers" and specify <dockerhub-username>/<app-name> as docker hub image repository. 
+5. Go to azure portal and create a new "Web app for containers" and specify `<dockerhub-username>/<app-name>` as docker hub image repository. 
 
 6. Set the required environment variables in App settings. Also configure Azure to use the port that we specified in Dockerfile using below App setting: 
 
