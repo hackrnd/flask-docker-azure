@@ -16,6 +16,14 @@
 
         docker push <dockerhub-username>/<app-name>
 
+5. Go to azure portal and create a new "Web app for containers" and specify <dockerhub-username>/<app-name> as docker hub image repository. 
 
-For more information, please see the [Use a custom Docker image for Web App for Containers](https://docs.microsoft.com/en-us/azure/app-service/containers/tutorial-custom-docker-image).
+6. Set the required environment variables in App settings. Also configure Azure to use the port that we specified in Dockerfile using below App setting: 
+
+        WEBSITES_PORT=8080
+
+7. Optionally, you can debug the container by going to kudu console at `https://<azure-app-name>.scm.azurewebsites.net/`
+
+
+For more information, please see: [Use a custom Docker image for Web App for Containers](https://docs.microsoft.com/en-us/azure/app-service/containers/tutorial-custom-docker-image).
 
